@@ -1,24 +1,17 @@
-const input = document.getElementById('inputText');
-const output = document.getElementById('outputText');
-
-function callAPI(mode) {
-  fetch('/api/chatgpt', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ prompt: input.value, mode: mode })
-  })
-  .then(res => res.json())
-  .then(data => {
-    output.value = data.result || "GPT no respondió.";
-  })
-  .catch(err => {
-    output.value = "Error: " + err.message;
-  });
+function removeEmojis(text) {
+  return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\uD83C-\uDBFF\uDC00-\uDFFF]|[\uFE00-\uFE0F])/g, '');
 }
 
-document.getElementById('cleanBtn').addEventListener('click', () => callAPI('clean'));
-document.getElementById('restructureBtn').addEventListener('click', () => callAPI('restructure'));
-document.getElementById('professionalizeBtn').addEventListener('click', () => callAPI('professionalize'));
+function restructureText(text) {
+  return text.replace(/[\#\]\[\*\$]/g, '').replace(/\s{2,}/g, ' ').trim();
+}
 
+document.getElementById("cleanBtn").addEventListener("click", () => {
+  const input = document.getElementById("inputText").value;
+  document.getElementById("outputText").value = removeEmojis(input);
+});
+
+document.getElementById("restructureBtn").addEventListener("click", () => {
+  const input = document.getElementById("inputText").value;
+  document.getElementById("outputText").value = restructureText(input);
+});
