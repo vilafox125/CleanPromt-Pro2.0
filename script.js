@@ -1,9 +1,7 @@
-// Eliminar emojis
 function removeEmojis(text) {
   return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\uD83C-\uDBFF\uDC00-\uDFFF]|\u2600-\u26FF|\u200D|\uFE0F)/g, '');
 }
 
-// Reestructurar texto
 function restructureText(text) {
   return text.replace(/[#\]\[\*\$%&<>]/g, '');
 }
