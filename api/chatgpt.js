@@ -1,8 +1,7 @@
-
 import { OpenAI } from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY // Asegúrate de que esta variable esté configurada en Vercel
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export default async function handler(req, res) {
@@ -10,39 +9,39 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt } = req.body;
+  const { prompt, mode } = req.body;
 
   if (!prompt || prompt.trim().length === 0) {
     return res.status(400).json({ error: 'Prompt is required' });
   }
 
+  const systemInstructions = {
+    restructure: 'Reestructura este prompt de forma clara y ordenada, sin modificar su intención.',
+    clean: 'Elimina todos los emojis y símbolos innecesarios del siguiente prompt sin alterar su significado.',
+    professionalize: 'Reescribe este prompt de forma clara, profesional y precisa, manteniendo su intención original.',
+  };
+
   try {
     const chatCompletion = await openai.chat.completions.create({
-      model: 'gpt-4', // Puedes usar 'gpt-3.5-turbo' si quieres ahorrar
+      model: 'gpt-4',
       messages: [
         {
           role: 'system',
-          content: 'Reescribe este prompt de forma clara, profesional y precisa, manteniendo su intención original.'
+          content: systemInstructions[mode] || systemInstructions['professionalize'],
         },
         {
           role: 'user',
-          content: prompt
-        }
+          content: prompt,
+        },
       ],
       temperature: 0.7,
-      max_tokens: 1000
+      max_tokens: 1000,
     });
 
-    const result = chatCompletion.choices[0]?.message?.content?.trim();
-
-    if (!result) {
-      return res.status(500).json({ error: 'No response from OpenAI.' });
-    }
-
-    return res.status(200).json({ result });
-
+    res.status(200).json({ result: chatCompletion.choices[0].message.content });
   } catch (error) {
-    console.error('API Error:', error.message);
-    return res.status(500).json({ error: 'Failed to fetch completion from OpenAI.' });
+    console.error('API error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
