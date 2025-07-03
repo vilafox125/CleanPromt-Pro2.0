@@ -1,51 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CleanPromt helps you clean, format and professionalize ChatGPT prompts." />
-  <meta name="keywords" content="AI, prompt cleaner, ChatGPT, formatting, productivity" />
-  <title>CleanPromt – Clean & Professionalize Your Prompts</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CleanPromt</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>🧠 CleanPromt</h1>
-    <p>Smart Prompt Cleaner & Formatter for ChatGPT and beyond</p>
-    <div class="hero-img">
-      <img src="20250702_2326_Futuristic AI Interface_simple_compose_01jz6gegayfabtn1qkm78apbz3.png" alt="Futuristic AI interface cleaning text" />
-    </div>
-  </header>
+    <header>
+        <img src="20250702_2328_AI Mascot Magic_simple_compose_01jz6gm5tyf83rvj1h3dzz2dv2.png" alt="AI mascot logo" class="logo"/>
+        <h1>CleanPromt</h1>
+        <p>Smart Prompt Cleaner & Formatter for ChatGPT and beyond</p>
+    </header>
 
-  <main>
-    <textarea id="inputText" placeholder="Paste your raw prompt here..."></textarea>
-    <div class="buttons">
-      <button onclick="netejarText()">Clean</button>
-      <button onclick="reestructurarText()">Restructure</button>
-      <button onclick="professionalizePrompt()">Professionalize Prompt</button>
-      <button onclick="copiarText()">Copy</button>
-    </div>
+    <main>
+        <textarea id="inputText" placeholder="Paste your raw prompt here..."></textarea>
+        <div class="buttons">
+            <button onclick="netejaprompt()">Clean</button>
+            <button onclick="reestructuraText()">Restructure</button>
+            <button onclick="professionalizePrompt()">Professionalize Prompt</button>
+            <button onclick="copiarText()">Copy</button>
+        </div>
+        <section>
+            <h2>🔍 Preview</h2>
+            <div id="previewBox" class="preview-box"></div>
+        </section>
+    </main>
 
-    <section>
-      <h2>🔍 Preview</h2>
-      <div class="section-img">
-        <img src="20250702_2327_AI-Powered Prompt Cleansing_simple_compose_01jz6ghp9ce3ft24q8sqkpn61j.png" alt="AI cleansing messy prompt" />
-      </div>
-      <div id="previewBox"></div>
-    </section>
+    <footer>
+        <p>© 2025 CleanPromt. Built with AI by Ot & Guillem.</p>
+    </footer>
 
-    <section>
-      <h2>✨ Your AI Assistant</h2>
-      <div class="section-img">
-        <img src="20250702_2328_AI Mascot Magic_simple_compose_01jz6gm5tyf83rvj1h3dzz2dv2.png" alt="AI mascot assisting with prompt improvement" />
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 CleanPromt. Built with AI by Ot & Guillem.</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
