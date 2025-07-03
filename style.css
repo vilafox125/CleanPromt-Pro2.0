@@ -19,6 +19,9 @@ textarea {
   margin: 10px 0;
   padding: 10px;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
 }
 
 .buttons button {
@@ -34,3 +37,4 @@ textarea {
 #restructureBtn { background-color: #2196F3; color: white; }
 #copyBtn { background-color: #ff9800; color: white; }
 #aiBtn { background-color: #9c27b0; color: white; }
+
