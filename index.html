@@ -8,16 +8,15 @@
 </head>
 <body>
   <div class="container">
-    <img src="robot.png" alt="Logo" class="logo" />
+    <img src="robot.png" alt="Logo" class="logo"/>
     <h1>CleanPromt</h1>
-    <p>Smart Prompt Cleaner & Improver for ChatGPT and beyond</p>
-    <textarea id="inputText" placeholder="Paste your prompt here..."></textarea>
-    <div>
+    <p>Offline Smart Prompt Cleaner</p>
+    <textarea id="inputText" placeholder="Pega tu prompt aquí..."></textarea>
+    <div class="button-group">
       <button id="cleanBtn">🧼 Eliminar emojis</button>
-      <button id="restructureBtn">🔧 Reestructurar</button>
-      <button id="professionalizeBtn">🤖 Profesionalizar</button>
+      <button id="restructureBtn">📄 Reestructurar</button>
     </div>
-    <textarea id="outputText" placeholder="El resultado aparecerá aquí..."></textarea>
+    <textarea id="outputText" placeholder="El resultado aparecerá aquí..." contenteditable="true"></textarea>
   </div>
   <script src="script.js"></script>
 </body>
